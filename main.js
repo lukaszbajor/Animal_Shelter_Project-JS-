@@ -35,4 +35,6 @@ const animals = [
     describe: "Big turtle in country",
   },
 ];
-console.log(animals);
+// animals.forEach((el) => {
+//   console.log(el.sex);
+// });
