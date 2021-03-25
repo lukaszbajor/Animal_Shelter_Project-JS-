@@ -21,6 +21,13 @@ const animals = [
     describe: "Small cat in country",
   },
   {
+    type: "Cat",
+    name: "Kami",
+    age: 1,
+    sex: "F",
+    describe: "Small cat in country",
+  },
+  {
     type: "Hamster",
     name: "Fini",
     age: 1.5,
@@ -60,8 +67,10 @@ const addAnimal = () => {
             <button class="delete">Delete</button>
           </div>
       `;
+
     box.appendChild(div);
   });
 };
 
 addAnimal();
+//xd
