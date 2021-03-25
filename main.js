@@ -1,6 +1,13 @@
 const animals = [
   {
     type: "Dog",
+    name: "Diplodok",
+    age: 2,
+    sex: "M",
+    describe: "Small dog in country",
+  },
+  {
+    type: "Dog",
     name: "Azor",
     age: 2,
     sex: "M",
@@ -32,9 +39,29 @@ const animals = [
     name: "John",
     age: 10,
     sex: "M",
-    describe: "Big turtle in country",
+    describe: "Big turtle in countrydasdasdasdasdas",
   },
 ];
-// animals.forEach((el) => {
-//   console.log(el.sex);
-// });
+
+const box = document.querySelector(".items");
+
+const addAnimal = () => {
+  animals.forEach((el) => {
+    const div = document.createElement("div");
+    div.classList.add("item");
+    div.innerHTML = `
+          <h2 class="name">${el.name}</h2>
+          <p class="sex">Sex: ${el.sex}</p>
+          <p class="age">Age: ${el.age}</p>
+          <p class="describe">"${el.describe}"</p>
+          <p class="type">${el.type}</p>
+          <div class="buttons">
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+          </div>
+      `;
+    box.appendChild(div);
+  });
+};
+
+addAnimal();
