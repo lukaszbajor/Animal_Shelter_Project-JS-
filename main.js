@@ -121,10 +121,6 @@ const showCats = () => {
 };
 
 dogs.addEventListener("click", showDogs);
-allAnimal.addEventListener("click", () => {
-  box.textContent = "";
-  showAllAnimal();
-});
 cats.addEventListener("click", showCats);
 allAnimal.addEventListener("click", () => {
   box.textContent = "";
