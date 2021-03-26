@@ -35,7 +35,7 @@ li {
   margin: 10px;
 }
 .item {
-  flex-basis: 12%;
+  flex-basis: 10%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -43,6 +43,7 @@ li {
   padding: 10px;
   background-color: #fff;
   text-align: left;
+  border: 1px solid black;
 }
 .item h2 {
   margin-bottom: 5px;
@@ -50,13 +51,17 @@ li {
 }
 
 .buttons {
-  min-height: 100px;
+  min-height: 120px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 .buttons button {
   margin: 0 5px;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid black;
+  cursor: pointer;
 }
 .panel {
   display: flex;

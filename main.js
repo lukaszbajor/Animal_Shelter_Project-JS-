@@ -39,7 +39,7 @@ const animals = [
     name: "Alex",
     age: 10,
     sex: "M",
-    describe: "Big turtle in countrydasdasdasdasdas",
+    describe: "Big turtle in countrydasda",
   },
   {
     type: "Dog",
@@ -53,7 +53,7 @@ const animals = [
     name: "Jonas",
     age: 10,
     sex: "M",
-    describe: "Big turtle in countrydasdasdasdasdas",
+    describe: "Big turtle in countrydasda",
   },
   {
     type: "Turtle",
@@ -92,7 +92,6 @@ const showAllAnimal = () => {
     return box.appendChild(div);
   });
 };
-
 showAllAnimal();
 
 
