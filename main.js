@@ -94,8 +94,6 @@ const showAllAnimal = () => {
 };
 showAllAnimal();
 
-
-
 const showDogs = () => {
   showAllAnimal();
   const sd = [...document.getElementsByClassName("dog")];
@@ -132,3 +130,13 @@ allAnimal.addEventListener("click", () => {
   // box.innerHTML = "";
   showAllAnimal();
 });
+
+//ADD PANEL
+
+const addPanel = document.querySelector(".add-panel");
+const btnAdd = document.querySelector(".btn-add");
+const showAddPanel = () => {
+  addPanel.classList.add("reset");
+};
+
+btnAdd.addEventListener("click", showAddPanel);
