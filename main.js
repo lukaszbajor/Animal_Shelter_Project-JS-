@@ -101,6 +101,7 @@ const showDogs = () => {
   sd.map((item) => {
     box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
   });
+  asdas();
 };
 
 const showCats = () => {
@@ -111,6 +112,7 @@ const showCats = () => {
   sc.map((item) => {
     box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
   });
+  asdas();
 };
 
 const showHorses = () => {
@@ -121,6 +123,7 @@ const showHorses = () => {
   sh.map((item) => {
     box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
   });
+  asdas();
 };
 
 dogs.addEventListener("click", showDogs);
@@ -129,6 +132,7 @@ horses.addEventListener("click", showHorses);
 allAnimal.addEventListener("click", () => {
   // box.innerHTML = "";
   showAllAnimal();
+  asdas();
 });
 
 //ADD PANEL
@@ -140,3 +144,14 @@ const showAddPanel = () => {
 };
 
 btnAdd.addEventListener("click", showAddPanel);
+
+// EDIT ANIMAL
+const asdas = () => {
+  const editBtn = document.querySelectorAll(".edit");
+  editBtn.forEach((item, id) => {
+    item.addEventListener("click", () => {
+      console.log("kliknieto");
+    });
+  });
+};
+asdas();
