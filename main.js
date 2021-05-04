@@ -5,6 +5,7 @@ const animals = [
     age: 2,
     sex: "M",
     describe: "Small dog in country",
+    id: 0,
   },
   {
     type: "Dog",
@@ -12,6 +13,7 @@ const animals = [
     age: 2,
     sex: "M",
     describe: "Small dog in country",
+    id: 1,
   },
   {
     type: "Cat",
@@ -19,6 +21,7 @@ const animals = [
     age: 1,
     sex: "F",
     describe: "Small cat in country",
+    id: 2,
   },
   {
     type: "Cat",
@@ -26,6 +29,7 @@ const animals = [
     age: 1,
     sex: "F",
     describe: "Small cat in country",
+    id: 3,
   },
   {
     type: "Hamster",
@@ -33,6 +37,7 @@ const animals = [
     age: 1.5,
     sex: "M",
     describe: "Small hamster in country",
+    id: 4,
   },
   {
     type: "Horse",
@@ -40,6 +45,7 @@ const animals = [
     age: 10,
     sex: "M",
     describe: "Big turtle in countrydasda",
+    id: 5,
   },
   {
     type: "Dog",
@@ -47,6 +53,7 @@ const animals = [
     age: 3.5,
     sex: "F",
     describe: "Small dog in country",
+    id: 6,
   },
   {
     type: "Horse",
@@ -54,6 +61,7 @@ const animals = [
     age: 10,
     sex: "M",
     describe: "Big turtle in countrydasda",
+    id: 7,
   },
   {
     type: "Turtle",
@@ -61,6 +69,7 @@ const animals = [
     age: 10,
     sex: "M",
     describe: "Big turtle in countrydasdasdasdasdas",
+    id: 8,
   },
 ];
 
@@ -95,35 +104,39 @@ const showAllAnimal = () => {
 showAllAnimal();
 
 const showDogs = () => {
+  deleteAnimal();
   showAllAnimal();
   const sd = [...document.getElementsByClassName("dog")];
   box.innerHTML = "";
   sd.map((item) => {
     box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
+    deleteAnimal();
   });
-  asdas();
 };
 
 const showCats = () => {
+  deleteAnimal();
   showAllAnimal();
   const sc = [...document.getElementsByClassName("cat")];
   box.innerHTML = "";
 
   sc.map((item) => {
     box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
+    deleteAnimal();
   });
-  asdas();
 };
 
 const showHorses = () => {
+  deleteAnimal();
   showAllAnimal();
+
   const sh = [...document.getElementsByClassName("horse")];
   box.innerHTML = "";
 
   sh.map((item) => {
     box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
+    deleteAnimal();
   });
-  asdas();
 };
 
 dogs.addEventListener("click", showDogs);
@@ -131,8 +144,9 @@ cats.addEventListener("click", showCats);
 horses.addEventListener("click", showHorses);
 allAnimal.addEventListener("click", () => {
   // box.innerHTML = "";
+  deleteAnimal();
   showAllAnimal();
-  asdas();
+  deleteAnimal();
 });
 
 //ADD PANEL
@@ -146,12 +160,28 @@ const showAddPanel = () => {
 btnAdd.addEventListener("click", showAddPanel);
 
 // EDIT ANIMAL
-const asdas = () => {
-  const editBtn = document.querySelectorAll(".edit");
-  editBtn.forEach((item, id) => {
-    item.addEventListener("click", () => {
-      console.log("kliknieto");
+// const asdas = () => {
+//   const editBtn = document.querySelectorAll(".edit");
+//   editBtn.forEach((item, id) => {
+//     item.addEventListener("click", () => {
+//       console.log("kliknieto");
+//       // console.log(id);
+//     });
+//   });
+// };
+// asdas();
+
+//DELETE ANIMAL
+
+const deleteAnimal = () => {
+  const deleteBtns = document.querySelectorAll(".delete");
+  deleteBtns.forEach((item, id) => {
+    item.addEventListener("click", (e) => {
+      e.target.closest("div.item").remove();
+      animals.splice(id, 1);
+      console.log(id);
+      console.log(animals);
     });
   });
 };
-asdas();
+deleteAnimal();
