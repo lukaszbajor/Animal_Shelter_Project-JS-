@@ -1,4 +1,4 @@
-const animals = [
+let animals = [
   {
     type: "Dog",
     name: "Diplodok",
@@ -68,7 +68,7 @@ const animals = [
     name: "John",
     age: 10,
     sex: "M",
-    describe: "Big turtle in countrydasdasdasdasdas",
+    describe: "Big turtle in countryda",
     id: 8,
   },
 ];
@@ -78,12 +78,15 @@ const dogs = document.querySelector(".dogs");
 const cats = document.querySelector(".cats");
 const horses = document.querySelector(".horses");
 const allAnimal = document.querySelector(".all");
+const countOfPlace = document.querySelector(".count");
 
 const showAllAnimal = () => {
+  countOfPlace.textContent = animals.length;
   box.textContent = "";
   animals.forEach((el) => {
     const div = document.createElement("div");
     div.classList.add("item");
+    div.dataset.animalId = el.id;
     div.innerHTML = `
           <h2 class="name">${el.name}</h2>
           <p class="sex">Sex: ${el.sex}</p>
@@ -92,7 +95,7 @@ const showAllAnimal = () => {
           <p class="type">${el.type}</p>
           <div class="buttons">
             <button class="edit">Edit</button>
-            <button class="delete">Delete</button>
+            <button class="delete" onclick=deleteAnimal(${el.id})>Delete</button>
           </div>
       `;
     if (el.type === "Dog") div.classList.add("dog");
@@ -101,53 +104,46 @@ const showAllAnimal = () => {
     return box.appendChild(div);
   });
 };
+
 showAllAnimal();
 
-const showDogs = () => {
-  deleteAnimal();
-  showAllAnimal();
-  const sd = [...document.getElementsByClassName("dog")];
-  box.innerHTML = "";
-  sd.map((item) => {
-    box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
-    deleteAnimal();
-  });
-};
+// const showDogs = () => {
+//   showAllAnimal();
+//   const sd = [...document.getElementsByClassName("dog")];
+//   box.innerHTML = "";
+//   sd.forEach((item) => {
+//     box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
+//   });
+// };
 
-const showCats = () => {
-  deleteAnimal();
-  showAllAnimal();
-  const sc = [...document.getElementsByClassName("cat")];
-  box.innerHTML = "";
+// const showCats = () => {
+//   showAllAnimal();
+//   const sc = [...document.getElementsByClassName("cat")];
+//   box.innerHTML = "";
 
-  sc.map((item) => {
-    box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
-    deleteAnimal();
-  });
-};
+//   sc.forEach((item) => {
+//     deleteAnimal();
+//     box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
+//   });
+// };
 
-const showHorses = () => {
-  deleteAnimal();
-  showAllAnimal();
+// const showHorses = () => {
+//   showAllAnimal();
+//   const sh = [...document.getElementsByClassName("horse")];
+//   box.innerHTML = "";
 
-  const sh = [...document.getElementsByClassName("horse")];
-  box.innerHTML = "";
+//   sh.forEach((item) => {
+//     box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
+//   });
+// };
 
-  sh.map((item) => {
-    box.innerHTML += `<div class="item">${item.innerHTML} </div>`;
-    deleteAnimal();
-  });
-};
-
-dogs.addEventListener("click", showDogs);
-cats.addEventListener("click", showCats);
-horses.addEventListener("click", showHorses);
-allAnimal.addEventListener("click", () => {
-  // box.innerHTML = "";
-  deleteAnimal();
-  showAllAnimal();
-  deleteAnimal();
-});
+// dogs.addEventListener("click", showDogs);
+// cats.addEventListener("click", showCats);
+// horses.addEventListener("click", showHorses);
+// allAnimal.addEventListener("click", () => {
+//   // box.innerHTML = "";
+//   showAllAnimal();
+// });
 
 //ADD PANEL
 
@@ -159,29 +155,68 @@ const showAddPanel = () => {
 
 btnAdd.addEventListener("click", showAddPanel);
 
-// EDIT ANIMAL
-// const asdas = () => {
-//   const editBtn = document.querySelectorAll(".edit");
-//   editBtn.forEach((item, id) => {
-//     item.addEventListener("click", () => {
-//       console.log("kliknieto");
-//       // console.log(id);
-//     });
-//   });
-// };
-// asdas();
+//CHANGE COUNT
 
-//DELETE ANIMAL
-
-const deleteAnimal = () => {
-  const deleteBtns = document.querySelectorAll(".delete");
-  deleteBtns.forEach((item, id) => {
-    item.addEventListener("click", (e) => {
-      e.target.closest("div.item").remove();
-      animals.splice(id, 1);
-      console.log(id);
-      console.log(animals);
-    });
-  });
+const countOfAnimal = () => {
+  countOfPlace.textContent = animals.length;
 };
-deleteAnimal();
+// EDIT ANIMAL
+
+// DELETE ANIMAL
+// const deleteBtns = document.querySelectorAll(".delete");
+
+const deleteAnimal = (id) => {
+  animals = animals.filter((animal) => {
+    if (animal.id === id) {
+      document.querySelector(`[data-animal-id="${id}"]`).remove();
+      return false;
+    }
+    return true;
+  });
+  countOfAnimal();
+  console.table(animals);
+};
+
+//ADD ANIMAL
+const inpName = document.querySelector(".inpname");
+const inpAge = document.querySelector(".inpage");
+const inpSex = document.querySelector(".inpsex");
+const selectValue = document.getElementById("type");
+const taDescribe = document.querySelector(".inpdescribe");
+const addAnimalBtn = document.querySelector(".add-animal");
+
+const addAnimal = () => {
+  const name = inpName.value;
+  const sex = inpSex.value;
+  const age = inpAge.value;
+  const describe = taDescribe.value;
+  let id = animals.length++;
+
+  const div = document.createElement("div");
+  div.classList.add("item");
+  div.dataset.animalId = id;
+  div.innerHTML = `
+          <h2 class="name">${name}</h2>
+          <p class="sex">Sex: ${sex}</p>
+          <p class="age">Age: ${age}</p>
+          <p class="describe">"${describe}"</p>
+          <p class="type">DOG</p>
+          <div class="buttons">
+            <button class="edit">Edit</button>
+            <button class="delete" onclick=deleteAnimal(${id})>Delete</button>
+          </div>
+          `;
+  animals.push({
+    type: "XD",
+    name: name,
+    age: age,
+    sex: sex,
+    describe: describe,
+    id: id,
+  });
+  countOfAnimal();
+  return box.appendChild(div);
+  // console.log(name, age, describe);
+};
+console.table(animals);
+addAnimalBtn.addEventListener("click", addAnimal);

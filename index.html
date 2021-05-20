@@ -25,7 +25,7 @@
           <button class="cats">Cats</button>
           <button class="horses">Horses</button>
         </div>
-        <p>Count of place: <span>0</span></p>
+        <p>Count of place: <span class="count"></span>/30</p>
       </div>
 
       <div class="items">
@@ -46,14 +46,31 @@
       <div class="add-panel">
         <div class="data">
           <h2 class="add-title">Add animal to our shelter!</h2>
-          Name: <input type="text" /> <br />
-          Age: <input type="text" /><br />
-          Type: <input type="text" /><br />
-          Small describe: <br />
-          <textarea name="describe" id="describe" cols="30" rows="1"></textarea>
+          Name: <br />
+          <input type="text" class="inpname" /> <br />
+          Sex: <br />
+          <input type="text" class="inpsex" /><br />
+          Age: <br />
+          <input type="number" class="inpage" /><br />
+          Type: <br />
+          <select id="type">
+            <option value="1">Dog</option>
+            <option value="2">Cat</option>
+            <option value="3">Horse</option>
+          </select>
+          <br />
+          Small describe:
+          <br />
+          <textarea
+            name="describe"
+            id="describe"
+            cols="30"
+            rows="10"
+            class="inpdescribe"
+          ></textarea>
         </div>
         <div class="add-buttons">
-          <button>Add</button>
+          <button class="add-animal">Add</button>
           <button>Reset</button>
         </div>
       </div>
