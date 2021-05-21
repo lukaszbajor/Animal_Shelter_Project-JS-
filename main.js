@@ -83,7 +83,7 @@ const countOfPlace = document.querySelector(".count");
 const showAllAnimal = () => {
   countOfPlace.textContent = animals.length;
   box.textContent = "";
-  animals.forEach((el) => {
+  animals.filter((el) => {
     const div = document.createElement("div");
     div.classList.add("item");
     div.dataset.animalId = el.id;
@@ -98,10 +98,11 @@ const showAllAnimal = () => {
             <button class="delete" onclick=deleteAnimal(${el.id})>Delete</button>
           </div>
       `;
+
     if (el.type === "Dog") div.classList.add("dog");
     else if (el.type === "Cat") div.classList.add("cat");
     else if (el.type === "Horse") div.classList.add("horse");
-    return box.appendChild(div);
+    box.appendChild(div);
   });
 };
 
@@ -174,7 +175,6 @@ const deleteAnimal = (id) => {
     return true;
   });
   countOfAnimal();
-  console.table(animals);
 };
 
 //ADD ANIMAL
@@ -190,7 +190,7 @@ const addAnimal = () => {
   const sex = inpSex.value;
   const age = inpAge.value;
   const describe = taDescribe.value;
-  let id = animals.length++;
+  let id = animals.length;
 
   const div = document.createElement("div");
   div.classList.add("item");
@@ -214,9 +214,9 @@ const addAnimal = () => {
     describe: describe,
     id: id,
   });
+
   countOfAnimal();
-  return box.appendChild(div);
-  // console.log(name, age, describe);
+
+  box.appendChild(div);
 };
-console.table(animals);
 addAnimalBtn.addEventListener("click", addAnimal);
