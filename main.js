@@ -219,6 +219,7 @@ const errorAge = document.querySelector(".error-age");
 const errorSex = document.querySelector(".error-sex");
 const errorSelect = document.querySelector(".error-select");
 const errorDescribe = document.querySelector(".error-describe");
+let flag = false;
 
 const addAnimal = () => {
   const name = inpName.value;
@@ -227,19 +228,51 @@ const addAnimal = () => {
   const age = inpAge.value;
   const describe = taDescribe.value;
   let id = animals.length;
-  if (
-    (name !== "") &
-    (age !== "") &
-    (sex === "F" || sex === "M") &
-    (selectValue.options[selectValue.selectedIndex].text !=
-      "Choose any option") &
-    (describe !== "")
-  ) {
-    if (animals.length < 30) {
-      const div = document.createElement("div");
-      div.classList.add("item");
-      div.dataset.animalId = id;
-      div.innerHTML = `
+  if ((flag = true)) {
+    if (name !== "") {
+      flag = true;
+      errorName.textContent = "";
+    } else {
+      errorName.textContent = "This field cannot empty!";
+      return (flag = false);
+    }
+    if (sex === "F" || sex === "M") {
+      errorSex.textContent = "";
+      flag = true;
+    } else {
+      errorSex.textContent = "Only F or M";
+      return (flag = false);
+    }
+    if (age !== "") {
+      errorAge.textContent = "";
+      flag = true;
+    } else {
+      errorAge.textContent = "This field cannot empty!";
+      return (flag = false);
+    }
+
+    if (
+      selectValue.options[selectValue.selectedIndex].text != "Choose any option"
+    ) {
+      errorSelect.textContent = "";
+      flag = true;
+    } else {
+      errorSelect.textContent = "Choose any option : Dog/Cat/Horse!";
+      return (flag = false);
+    }
+    if (describe !== "") {
+      errorDescribe.textContent = "";
+      flag = true;
+    } else {
+      errorDescribe.textContent = "Write any words about animal!";
+      return (flag = false);
+    }
+    {
+      if (animals.length < 30) {
+        const div = document.createElement("div");
+        div.classList.add("item");
+        div.dataset.animalId = id;
+        div.innerHTML = `
           <h2 class="name">${name}</h2>
           <p class="sex">Sex: ${sex}</p>
           <p class="age">Age: ${age}</p>
@@ -250,26 +283,24 @@ const addAnimal = () => {
             <button class="delete" onclick=deleteAnimal(${id})>Delete</button>
           </div>
           `;
-      animals.push({
-        type: select,
-        name: name,
-        age: age,
-        sex: sex,
-        describe: describe,
-        id: id,
-      });
+        animals.push({
+          type: select,
+          name: name,
+          age: age,
+          sex: sex,
+          describe: describe,
+          id: id,
+        });
 
-      countOfAnimal();
+        countOfAnimal();
 
-      box.appendChild(div);
-      resetData();
+        box.appendChild(div);
+        resetData();
+      }
     }
+    return (flag = true);
   } else {
-    errorName.textContent = "This field cannot empty!";
-    errorAge.textContent = "This field cannot empty!";
-    errorSex.textContent = "Only F or M";
-    errorSelect.textContent = "Choose any option : Dog/Cat/Horse!";
-    errorDescribe.textContent = "Write any words about animal!";
+    return (flag = false);
   }
 };
 
@@ -284,5 +315,11 @@ const resetData = () => {
   inpSex.value = "";
   taDescribe.value = "";
   select = selectValue.options[(selectValue.selectedIndex = 0)].text;
+
+  errorName.textContent = "";
+  errorAge.textContent = "";
+  errorSex.textContent = "";
+  errorSelect.textContent = "";
+  errorDescribe.textContent = "";
 };
 resetBtn.addEventListener("click", resetData);
