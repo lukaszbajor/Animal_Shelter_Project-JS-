@@ -238,7 +238,7 @@ const addAnimal = () => {
           </div>
           `;
     animals.push({
-      type: "XD",
+      type: select,
       name: name,
       age: age,
       sex: sex,
