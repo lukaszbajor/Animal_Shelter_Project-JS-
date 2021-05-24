@@ -49,10 +49,13 @@
           <h2 class="add-title">Add animal to our shelter!</h2>
           Name: <br />
           <input type="text" class="inpname" placeholder="Name" /> <br />
+          <p class="error error-name"></p>
           Sex: <br />
           <input type="text" class="inpsex" placeholder="F or M" /><br />
+          <p class="error error-sex"></p>
           Age: <br />
           <input type="number" class="inpage" placeholder="Age" /><br />
+          <p class="error error-age"></p>
           Type: <br />
           <select id="type" value="0">
             <option value="0" selected hidden>Choose any option</option>
@@ -60,6 +63,7 @@
             <option value="2">Cat</option>
             <option value="3">Horse</option>
           </select>
+          <p class="error error-select"></p>
           <br />
           Small describe:
           <br />
@@ -71,6 +75,7 @@
             class="inpdescribe"
             placeholder="Small describe"
           ></textarea>
+          <p class="error error-describe"></p>
         </div>
         <div class="add-buttons">
           <button class="add-animal">Add</button>

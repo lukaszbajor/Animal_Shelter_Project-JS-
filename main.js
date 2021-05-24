@@ -214,6 +214,11 @@ const inpSex = document.querySelector(".inpsex");
 let selectValue = document.getElementById("type");
 const taDescribe = document.querySelector(".inpdescribe");
 const addAnimalBtn = document.querySelector(".add-animal");
+const errorName = document.querySelector(".error-name");
+const errorAge = document.querySelector(".error-age");
+const errorSex = document.querySelector(".error-sex");
+const errorSelect = document.querySelector(".error-select");
+const errorDescribe = document.querySelector(".error-describe");
 
 const addAnimal = () => {
   const name = inpName.value;
@@ -222,11 +227,19 @@ const addAnimal = () => {
   const age = inpAge.value;
   const describe = taDescribe.value;
   let id = animals.length;
-  if (animals.length < 30) {
-    const div = document.createElement("div");
-    div.classList.add("item");
-    div.dataset.animalId = id;
-    div.innerHTML = `
+  if (
+    (name !== "") &
+    (age !== "") &
+    (sex === "F" || sex === "M") &
+    (selectValue.options[selectValue.selectedIndex].text !=
+      "Choose any option") &
+    (describe !== "")
+  ) {
+    if (animals.length < 30) {
+      const div = document.createElement("div");
+      div.classList.add("item");
+      div.dataset.animalId = id;
+      div.innerHTML = `
           <h2 class="name">${name}</h2>
           <p class="sex">Sex: ${sex}</p>
           <p class="age">Age: ${age}</p>
@@ -237,21 +250,29 @@ const addAnimal = () => {
             <button class="delete" onclick=deleteAnimal(${id})>Delete</button>
           </div>
           `;
-    animals.push({
-      type: select,
-      name: name,
-      age: age,
-      sex: sex,
-      describe: describe,
-      id: id,
-    });
+      animals.push({
+        type: select,
+        name: name,
+        age: age,
+        sex: sex,
+        describe: describe,
+        id: id,
+      });
 
-    countOfAnimal();
+      countOfAnimal();
 
-    box.appendChild(div);
-    resetData();
+      box.appendChild(div);
+      resetData();
+    }
+  } else {
+    errorName.textContent = "This field cannot empty!";
+    errorAge.textContent = "This field cannot empty!";
+    errorSex.textContent = "Only F or M";
+    errorSelect.textContent = "Choose any option : Dog/Cat/Horse!";
+    errorDescribe.textContent = "Write any words about animal!";
   }
 };
+
 addAnimalBtn.addEventListener("click", addAnimal);
 //--------------------------------------------------
 

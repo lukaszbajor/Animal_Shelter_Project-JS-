@@ -111,3 +111,7 @@ li {
 .show-elements {
   display: none;
 }
+.error {
+  color: red;
+  text-align: center;
+}
