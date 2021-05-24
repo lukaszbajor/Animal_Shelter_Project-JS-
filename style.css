@@ -85,3 +85,29 @@ li {
   display: block;
 }
 
+.add-panel-X {
+  width: 20px;
+  padding: 5px;
+  text-align: right;
+  cursor: pointer;
+}
+.inpdescribe {
+  resize: none;
+}
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+.add-buttons {
+  display: flex;
+  justify-content: center;
+}
+.add-buttons button {
+  margin: 5px;
+}
+
+.show-elements {
+  display: none;
+}

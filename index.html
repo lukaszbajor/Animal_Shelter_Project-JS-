@@ -44,16 +44,18 @@
         </div> -->
       </div>
       <div class="add-panel">
+        <p class="add-panel-X">X</p>
         <div class="data">
           <h2 class="add-title">Add animal to our shelter!</h2>
           Name: <br />
-          <input type="text" class="inpname" /> <br />
+          <input type="text" class="inpname" placeholder="Name" /> <br />
           Sex: <br />
-          <input type="text" class="inpsex" /><br />
+          <input type="text" class="inpsex" placeholder="F or M" /><br />
           Age: <br />
-          <input type="number" class="inpage" /><br />
+          <input type="number" class="inpage" placeholder="Age" /><br />
           Type: <br />
-          <select id="type">
+          <select id="type" value="0">
+            <option value="0" selected hidden>Choose any option</option>
             <option value="1">Dog</option>
             <option value="2">Cat</option>
             <option value="3">Horse</option>
@@ -67,11 +69,12 @@
             cols="30"
             rows="10"
             class="inpdescribe"
+            placeholder="Small describe"
           ></textarea>
         </div>
         <div class="add-buttons">
           <button class="add-animal">Add</button>
-          <button>Reset</button>
+          <button class="reset-data">Reset</button>
         </div>
       </div>
     </div>
