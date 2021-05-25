@@ -98,7 +98,7 @@ const showAllAnimal = () => {
           <p class="describe">"${el.describe}"</p>
           <p class="type">${el.type}</p>
           <div class="buttons">
-            <button class="edit">Edit</button>
+            <button class="edit" onclick=editAnimal(${el.id})>Edit</button>
             <button class="delete" onclick=deleteAnimal(${el.id})>Delete</button>
           </div>
       `;
@@ -186,6 +186,9 @@ const closeAddPanel = () => {
 closePanel.addEventListener("click", closeAddPanel);
 
 //----------------------------------------------------
+
+//--------------------------------------------------
+
 //CHANGE COUNT
 //----------------------------------------------------
 const countOfAnimal = () => {
@@ -279,7 +282,7 @@ const addAnimal = () => {
           <p class="describe">"${describe}"</p>
           <p class="type">${select}</p>
           <div class="buttons">
-            <button class="edit">Edit</button>
+            <button class="edit" onclick=editAnimal(${id})>Edit</button>
             <button class="delete" onclick=deleteAnimal(${id})>Delete</button>
           </div>
           `;
@@ -323,3 +326,49 @@ const resetData = () => {
   errorDescribe.textContent = "";
 };
 resetBtn.addEventListener("click", resetData);
+
+//EDIT PANEL
+//--------------------------------------------------
+const editPanel = document.querySelector(".edit-panel");
+const btnEdit = document.querySelector(".edit");
+const closePanelX = document.querySelector(".edit-panel-X");
+
+const eInpName = document.querySelector(".e-inpname");
+const eInpAge = document.querySelector(".e-inpage");
+const eInpSex = document.querySelector(".e-inpsex");
+const eSelectValue = document.getElementById("e-type");
+let eselect = selectValue.options[selectValue.selectedIndex];
+const eTaDescribe = document.querySelector(".e-inpdescribe");
+//Show/Close Panel
+// const showEditPanel = () => {
+//   editPanel.classList.add("reset");
+// };
+// // btnsEdit.forEach((btn) => {
+// btn.addEventListener("click", showEditPanel);
+// // });
+const updateInfBtn = document.querySelector(".edit-animal");
+const editAnimal = (id) => {
+  eInpName.value = animals[id].name;
+  eInpSex.value = animals[id].sex;
+  eInpAge.value = animals[id].age;
+  eselect.text = animals[id].type;
+  eTaDescribe.value = animals[id].describe;
+  editPanel.classList.add("reset");
+
+  const updateInfo = () => {
+    animals[id].name = eInpName.value;
+    animals[id].sex = eInpSex.value;
+    animals[id].age = eInpAge.value;
+    animals[id].type = eselect.text;
+    animals[id].describe = eTaDescribe.value;
+    updateInfBtn.removeEventListener("click", updateInfo);
+    editPanel.classList.remove("reset");
+    showAll();
+  };
+  updateInfBtn.addEventListener("click", updateInfo);
+};
+const closeEditPanel = () => {
+  editPanel.classList.remove("reset");
+};
+closePanelX.addEventListener("click", closeEditPanel);
+//----------------------------------------------------

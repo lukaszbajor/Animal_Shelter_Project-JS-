@@ -82,6 +82,45 @@
           <button class="reset-data">Reset</button>
         </div>
       </div>
+      <div class="edit-panel">
+        <p class="edit-panel-X">X</p>
+        <div class="data">
+          <h2 class="add-title">Update info for animal</h2>
+          Name: <br />
+          <input type="text" class="e-inpname" placeholder="Name" /> <br />
+          <p class="error error-name"></p>
+          Sex: <br />
+          <input type="text" class="e-inpsex" placeholder="F or M" /><br />
+          <p class="error error-sex"></p>
+          Age: <br />
+          <input type="number" class="e-inpage" placeholder="Age" /><br />
+          <p class="error error-age"></p>
+          Type: <br />
+          <select id="e-type" value="0">
+            <option value="0" selected hidden>Choose any option</option>
+            <option value="1">Dog</option>
+            <option value="2">Cat</option>
+            <option value="3">Horse</option>
+          </select>
+          <p class="error error-select"></p>
+          <br />
+          Small describe:
+          <br />
+          <textarea
+            name="describe"
+            id="describe"
+            cols="30"
+            rows="10"
+            class="e-inpdescribe"
+            placeholder="Small describe"
+          ></textarea>
+          <p class="error error-describe"></p>
+        </div>
+        <div class="edit-buttons">
+          <button class="edit-animal" onclick="editAnimal(id)">Update</button>
+          <button class="edit-reset-data">Reset</button>
+        </div>
+      </div>
     </div>
     <script src="main.js"></script>
   </body>
