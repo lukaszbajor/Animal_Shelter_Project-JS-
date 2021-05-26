@@ -239,7 +239,7 @@ const addAnimal = () => {
       errorName.textContent = "This field cannot empty!";
       return (flag = false);
     }
-    if (sex === "F" || sex === "M") {
+    if (sex.toUpperCase() === "F" || sex.toUpperCase() === "M") {
       errorSex.textContent = "";
       flag = true;
     } else {
@@ -348,6 +348,7 @@ let eTaDescribe = document.querySelector(".e-inpdescribe");
 // btn.addEventListener("click", showEditPanel);
 // // });
 const updateInfBtn = document.querySelector(".edit-animal");
+
 const editAnimal = (id) => {
   eInpName.value = animals[id].name;
   eInpSex.value = animals[id].sex;
