@@ -33,7 +33,7 @@ let animals = [
     id: 3,
   },
   {
-    type: "Hamster",
+    type: "Dog",
     name: "Fini",
     age: 1.5,
     sex: "M",
@@ -49,7 +49,7 @@ let animals = [
     id: 5,
   },
   {
-    type: "Dog",
+    type: "Cat",
     name: "Ksenia",
     age: 3.5,
     sex: "F",
@@ -65,7 +65,7 @@ let animals = [
     id: 7,
   },
   {
-    type: "Turtle",
+    type: "Horse",
     name: "John",
     age: 10,
     sex: "M",
@@ -332,13 +332,14 @@ resetBtn.addEventListener("click", resetData);
 const editPanel = document.querySelector(".edit-panel");
 const btnEdit = document.querySelector(".edit");
 const closePanelX = document.querySelector(".edit-panel-X");
+let eInpName = document.querySelector(".e-inpname");
+let eInpAge = document.querySelector(".e-inpage");
+let eInpSex = document.querySelector(".e-inpsex");
+let eSelectValue = document.getElementById("e-type");
+// let select = eSelectValue.options[eSelectValue.selectedIndex].text;
+let eTaDescribe = document.querySelector(".e-inpdescribe");
+// console.log(select);
 
-const eInpName = document.querySelector(".e-inpname");
-const eInpAge = document.querySelector(".e-inpage");
-const eInpSex = document.querySelector(".e-inpsex");
-const eSelectValue = document.getElementById("e-type");
-let eselect = selectValue.options[selectValue.selectedIndex];
-const eTaDescribe = document.querySelector(".e-inpdescribe");
 //Show/Close Panel
 // const showEditPanel = () => {
 //   editPanel.classList.add("reset");
@@ -351,7 +352,8 @@ const editAnimal = (id) => {
   eInpName.value = animals[id].name;
   eInpSex.value = animals[id].sex;
   eInpAge.value = animals[id].age;
-  eselect.text = animals[id].type;
+  eSelectValue.options[(eSelectValue.selectedIndex = 0)].text =
+    animals[id].type;
   eTaDescribe.value = animals[id].describe;
   editPanel.classList.add("reset");
 
@@ -359,13 +361,14 @@ const editAnimal = (id) => {
     animals[id].name = eInpName.value;
     animals[id].sex = eInpSex.value;
     animals[id].age = eInpAge.value;
-    animals[id].type = eselect.text;
+    animals[id].type = eSelectValue.options[eSelectValue.selectedIndex].text;
     animals[id].describe = eTaDescribe.value;
     updateInfBtn.removeEventListener("click", updateInfo);
     editPanel.classList.remove("reset");
     showAll();
   };
   updateInfBtn.addEventListener("click", updateInfo);
+  return;
 };
 const closeEditPanel = () => {
   editPanel.classList.remove("reset");
